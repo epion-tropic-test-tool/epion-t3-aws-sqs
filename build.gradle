@@ -14,10 +14,10 @@ ext {
     // バージョン定義
     versionMajor = 0
     versionMinor = 0
-    versionPatch = 1
+    versionPatch = 4
 
     // カスタムパッケージ名
-    customPackageName = 'custom'
+    customPackageName = 'aws-sqs'
 
     // アーティファクト関連
     group 'com.epion_t3'
@@ -47,6 +47,7 @@ dependencies {
 
     // Core Library
     api "com.epion_t3:epion-t3-core:0.0.4"
+    api 'com.epion_t3:epion-t3-aws-core:0.0.1'
 
     // For Develop
     compileOnly "org.projectlombok:lombok:1.18.6"
