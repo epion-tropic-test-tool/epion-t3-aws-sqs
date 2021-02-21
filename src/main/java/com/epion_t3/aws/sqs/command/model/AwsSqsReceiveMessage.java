@@ -6,18 +6,13 @@ import com.epion_t3.core.common.annotation.CommandDefinition;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Map;
-
-/**
- * メッセージ送信コマンド.
- */
 @Getter
 @Setter
 @CommandDefinition(id = "AwsSqsSendMessage", runner = AwsSqsSendMessageRunner.class)
-public class AwsSqsSendMessage extends AwsSqsBase {
-    private String messageGroupId;
-    private String messageDeduplicationId;
-    private boolean autoGenerateMessageGroupId = false;
-    private boolean autoMessageDeduplicationId = false;
-    private Map<String, String> messageAttributes;
+public class AwsSqsReceiveMessage extends AwsSqsBase {
+    private Integer maxNumberOfMessages = 1;
+    private Integer visibilityTimeout;
+    /** For Long Polling */
+    private Integer waitTimeSeconds;
+    private boolean deleteMessage = false;
 }

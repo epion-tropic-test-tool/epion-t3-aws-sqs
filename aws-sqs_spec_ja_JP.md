@@ -91,4 +91,6 @@ commands :
 
 |MessageID|MessageContents|
 |:---|:---|
+|com.epion_t3.aws.sqs.err.9002|対象（target）のEndpointからのメッセージ受信に失敗しました.SQS:{0}|
+|com.epion_t3.aws.sqs.err.9003|対象（target）のEndpointからのメッセージ削除に失敗しました.SQS:{0}|
 |com.epion_t3.aws.sqs.err.9001|対象（target）のEndpointへのメッセージ送信に失敗しました.SQS:{0}|

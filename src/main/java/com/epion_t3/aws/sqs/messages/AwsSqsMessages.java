@@ -10,6 +10,12 @@ import com.epion_t3.core.message.Messages;
  */
 public enum AwsSqsMessages implements Messages {
 
+    /** 対象（target）のEndpointからのメッセージ受信に失敗しました.SQS:{0} */
+    AWS_SQS_ERR_9002("com.epion_t3.aws.sqs.err.9002"),
+
+    /** 対象（target）のEndpointからのメッセージ削除に失敗しました.SQS:{0} */
+    AWS_SQS_ERR_9003("com.epion_t3.aws.sqs.err.9003"),
+
     /** 対象（target）のEndpointへのメッセージ送信に失敗しました.SQS:{0} */
     AWS_SQS_ERR_9001("com.epion_t3.aws.sqs.err.9001");
 
