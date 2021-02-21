@@ -1,0 +1,149 @@
+t3: 1.0
+#####################################
+# 対象言語
+#####################################
+languages:
+  - ja_JP
+#####################################
+# カスタム機能定義
+#####################################
+info:
+  name: aws-sqs
+  customPackage: com.epion_t3.aws.sqs
+  summary:
+    - lang: ja_JP
+      contents: "AWSのSQSへのアクセスを行う機能を提供します。"
+  description:
+    - lang: ja_JP
+      contents: "AmazonWebService（AWS）のSimpleQueueService（SQS）への各種アクセスを行う機能を提供します。事前データの配置、エビデンスの取得などに利用できるPUT、GETを代表とした機能です。"
+#####################################
+# コマンド定義
+#####################################
+commands:
+  ##########################
+  # AwsSqsSendMessage
+  ##########################
+  - id: AwsSqsSendMessage
+    evidenceCommand: false
+    summary:
+      - lang: ja_JP
+        contents: "SQSに対してメッセージの送信を行います。"
+    testItem:
+      - order: 1
+        summary:
+          - lang: ja_JP
+            contents: "SQS「${target}」に対してメッセージを送信します。"
+    function:
+      - order: 1
+        summary:
+          - lang: ja_JP
+            contents: "Excelの全てのシートに対して変数をバインドします。"
+      - order: 2
+        summary:
+          - lang: ja_JP
+            contents: "変数の参照記法「${スコープ.変数名}」が記載してあるセルの値を置換します。（部分置換を行えます）"
+      - order: 3
+        summary:
+          - lang: ja_JP
+            contents: "セルの型が「文字列」である場合にのみ置換します。"
+      - order: 4
+        summary:
+          - lang: ja_JP
+            contents: "置換後のExcelファイルは、エビデンスとして保存します。"
+      - order: 5
+        summary:
+          - lang: ja_JP
+            contents: "エビデンスファイル名は、「BindVariables_ + 元ファイル名」となります。"
+    structure:
+      - order: 1
+        name: id
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: コマンドのID
+      - order: 2
+        name: command
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: 「AwsSqsSendMessage」固定
+      - order: 3
+        name: summary
+        required: false
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: コマンドの概要（任意）
+      - order: 4
+        name: description
+        required: false
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: コマンドの詳細（任意）
+      - order: 6
+        name: target
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "対象とするSQSのEndpoint"
+      - order: 7
+        name: value
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "対象とするメッセージ"
+      - order: 8
+        name: messageGroupId
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "メッセージグループID"
+      - order: 9
+        name: messageDeduplicationId
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "メッセージ重複排除ID"
+      - order: 10
+        name: autoGenerateMessageGroupId
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "メッセージグループIDの自動生成フラグ"
+        description:
+          - lang: ja_JP
+            contents: "真偽値 `true` or `false` で指定します。"
+          - lang: ja_JP
+            contents: "メッセージグループIDが設定されていた場合、そちらが優先されます。"
+          - lang: ja_JP
+            contents: "メッセージグループIDの生成はUUIDで行われます。"
+      - order: 11
+        name: autoMessageDeduplicationId
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "メッセージ重複排除IDの自動生成フラグ"
+        description:
+          - lang: ja_JP
+            contents: "真偽値 `true` or `false` で指定します。"
+          - lang: ja_JP
+            contents: "メッセージ重複排除IDが設定されていた場合、そちらが優先されます。"
+          - lang: ja_JP
+            contents: "メッセージ重複排除IDの生成はUUIDで行われます。"
+#####################################
+# メッセージ定義
+#####################################
+messages:
+  - id: com.epion_t3.aws.sqs.err.9001
+    message:
+      - lang: ja_JP
+        contents: "対象（target）のEndpointへのメッセージ送信に失敗しました.SQS:{0}"
