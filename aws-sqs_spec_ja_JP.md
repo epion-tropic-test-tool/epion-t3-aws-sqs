@@ -37,7 +37,38 @@ AmazonWebService（AWS）のSimpleQueueService（SQS）への各種アクセス�
 
 |Name|Summary|Assert|Evidence|
 |:---|:---|:---|:---|
+|[AwsSqsReceiveMessage](#AwsSqsReceiveMessage)|SQSからメッセージの取得を行います。  ||X|
 |[AwsSqsSendMessage](#AwsSqsSendMessage)|SQSに対してメッセージの送信を行います。  |||
+
+------
+
+### AwsSqsReceiveMessage
+SQSからメッセージの取得を行います。
+#### Command Type
+- Assert : No
+- Evidence : __Yes__
+
+#### Functions
+- SQSからメッセージの取得を行います。
+- 取得されたメッセージは、エビデンスとして保存します。ファイル名は「receiveMessages.json」で固定です。
+- 受信したメッセージについて削除が必要な場合は削除処理をこのコマンド中に実施します。
+- 可視性タイムアウトの設定が可能です。
+- Waitタイムアウトの設定が可能です。ロングポーリングへの利用が想定している利用方法です。
+
+#### Structure
+```yaml
+commands : 
+  id : コマンドのID
+  command : 「AwsSqsReceiveMessage」固定
+  summary : コマンドの概要（任意）
+  description : コマンドの詳細（任意）
+  target : 対象とするSQSのEndpoint
+  maxNumberOfMessages : 同時に受信するメッセージの数。デフォルトは1です。10までの値で指定してください。
+  visibilityTimeout : 可視性タイムアウトの秒数を指定してください。
+  waitTimeSeconds : Waitタイムアウトの秒数を指定してください。
+  deleteMessage : 受信したメッセージをQueueから削除するかの指定。デフォルトは「false」となり削除しません。
+
+```
 
 ------
 
@@ -48,11 +79,10 @@ SQSに対してメッセージの送信を行います。
 - Evidence : No
 
 #### Functions
-- Excelの全てのシートに対して変数をバインドします。
-- 変数の参照記法「${スコープ.変数名}」が記載してあるセルの値を置換します。（部分置換を行えます）
-- セルの型が「文字列」である場合にのみ置換します。
-- 置換後のExcelファイルは、エビデンスとして保存します。
-- エビデンスファイル名は、「BindVariables_ + 元ファイル名」となります。
+- SQSに対してメッセージの送信を行います。
+- メッセージボディと属性を指定可能です。
+- メッセージグループID、メッセージ重複IDの設定については任意の値の設定と自動設定もサポートします。
+- それぞれの値について変数のバインドが適用可能です。
 
 #### Structure
 ```yaml
