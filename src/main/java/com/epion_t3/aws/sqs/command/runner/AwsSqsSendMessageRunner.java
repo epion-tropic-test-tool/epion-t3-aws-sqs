@@ -4,8 +4,10 @@ package com.epion_t3.aws.sqs.command.runner;
 import com.epion_t3.aws.core.configuration.AwsCredentialsProviderConfiguration;
 import com.epion_t3.aws.core.holder.AwsCredentialsProviderHolder;
 import com.epion_t3.aws.sqs.command.model.AwsSqsSendMessage;
+import com.epion_t3.aws.sqs.messages.AwsSqsMessages;
 import com.epion_t3.core.command.bean.CommandResult;
 import com.epion_t3.core.command.runner.impl.AbstractCommandRunner;
+import com.epion_t3.core.exception.SystemException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -92,11 +94,14 @@ public class AwsSqsSendMessageRunner extends AbstractCommandRunner<AwsSqsSendMes
         }
 
         // 送信
-        var response = sqs.sendMessage(requestBuilder.build());
-
-        logger.info("send complete message. messageId:{}, sequenceNumber:{}", response.messageId(),
-                response.sequenceNumber());
-
-        return CommandResult.getSuccess();
+        try {
+            var response = sqs.sendMessage(requestBuilder.build());
+            logger.info("send complete message. messageId:{}, sequenceNumber:{}", response.messageId(),
+                    response.sequenceNumber());
+            return CommandResult.getSuccess();
+        } catch (Exception e) {
+            // 送信エラー
+            throw new SystemException(e, AwsSqsMessages.AWS_SQS_ERR_9001, command.getTarget());
+        }
     }
 }
