@@ -10,6 +10,7 @@ import com.epion_t3.core.command.bean.CommandResult;
 import com.epion_t3.core.command.runner.impl.AbstractCommandRunner;
 import com.epion_t3.core.exception.SystemException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import software.amazon.awssdk.services.sqs.SqsClient;
@@ -29,7 +30,10 @@ public class AwsSqsReceiveMessageRunner extends AbstractCommandRunner<AwsSqsRece
     /**
      * 変換処理用
      */
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
+    static {
+        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+    }
 
     /**
      * {@inheritDoc}
@@ -96,6 +100,7 @@ public class AwsSqsReceiveMessageRunner extends AbstractCommandRunner<AwsSqsRece
                         .entries(response.messages()
                                 .stream()
                                 .map(x -> DeleteMessageBatchRequestEntry.builder()
+                                        .id(x.messageId())
                                         .receiptHandle(x.receiptHandle())
                                         .build())
                                 .collect(Collectors.toList()))

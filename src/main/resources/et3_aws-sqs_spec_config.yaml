@@ -110,7 +110,7 @@ commands:
       - order: 10
         name: autoGenerateMessageGroupId
         required: false
-        type: string
+        type: boolean
         summary:
           - lang: ja_JP
             contents: "メッセージグループIDの自動生成フラグ <1><2><3>"
@@ -124,7 +124,7 @@ commands:
       - order: 11
         name: autoMessageDeduplicationId
         required: false
-        type: string
+        type: boolean
         summary:
           - lang: ja_JP
             contents: "メッセージ重複排除IDの自動生成フラグ <4><5><6>"

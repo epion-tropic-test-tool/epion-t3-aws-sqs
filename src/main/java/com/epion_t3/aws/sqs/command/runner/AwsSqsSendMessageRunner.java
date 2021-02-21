@@ -46,7 +46,7 @@ public class AwsSqsSendMessageRunner extends AbstractCommandRunner<AwsSqsSendMes
         if (command.isAutoGenerateMessageGroupId()) {
             if (StringUtils.isEmpty(command.getMessageGroupId())) {
                 var messageGroupId = UUID.randomUUID().toString();
-                logger.info("generate message deduplication id : {}", messageGroupId);
+                logger.info("generate message group id : {}", messageGroupId);
                 requestBuilder.messageGroupId(messageGroupId);
             } else {
                 logger.info("set message group id : {}", command.getMessageGroupId());
