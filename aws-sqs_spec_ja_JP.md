@@ -65,15 +65,15 @@ commands :
   value : 対象とするメッセージ
   messageGroupId : メッセージグループID
   messageDeduplicationId : メッセージ重複排除ID
-  autoGenerateMessageGroupId : メッセージグループIDの自動生成フラグ
-  autoMessageDeduplicationId : メッセージ重複排除IDの自動生成フラグ
+  autoGenerateMessageGroupId : メッセージグループIDの自動生成フラグ <1><2><3>
+  autoMessageDeduplicationId : メッセージ重複排除IDの自動生成フラグ <4><5><6>
 
 ```
 
-1. 真偽値 &#96;true&#96; or &#96;false&#96; で指定します。
+1. 真偽値 true or false で指定します。
 1. メッセージグループIDが設定されていた場合、そちらが優先されます。
 1. メッセージグループIDの生成はUUIDで行われます。
-1. 真偽値 &#96;true&#96; or &#96;false&#96; で指定します。
+1. 真偽値 true or false で指定します。
 1. メッセージ重複排除IDが設定されていた場合、そちらが優先されます。
 1. メッセージ重複排除IDの生成はUUIDで行われます。
 

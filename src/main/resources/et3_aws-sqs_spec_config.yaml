@@ -117,10 +117,10 @@ commands:
         type: string
         summary:
           - lang: ja_JP
-            contents: "メッセージグループIDの自動生成フラグ"
+            contents: "メッセージグループIDの自動生成フラグ <1><2><3>"
         description:
           - lang: ja_JP
-            contents: "真偽値 `true` or `false` で指定します。"
+            contents: "真偽値 true or false で指定します。"
           - lang: ja_JP
             contents: "メッセージグループIDが設定されていた場合、そちらが優先されます。"
           - lang: ja_JP
@@ -131,10 +131,10 @@ commands:
         type: string
         summary:
           - lang: ja_JP
-            contents: "メッセージ重複排除IDの自動生成フラグ"
+            contents: "メッセージ重複排除IDの自動生成フラグ <4><5><6>"
         description:
           - lang: ja_JP
-            contents: "真偽値 `true` or `false` で指定します。"
+            contents: "真偽値 true or false で指定します。"
           - lang: ja_JP
             contents: "メッセージ重複排除IDが設定されていた場合、そちらが優先されます。"
           - lang: ja_JP
