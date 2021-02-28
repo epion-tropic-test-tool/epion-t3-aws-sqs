@@ -39,6 +39,7 @@ AmazonWebService（AWS）のSimpleQueueService（SQS）への各種アクセス�
 |:---|:---|:---|:---|
 |[AwsSqsReceiveMessage](#AwsSqsReceiveMessage)|SQSからメッセージの取得を行います。  ||X|
 |[AwsSqsSendMessage](#AwsSqsSendMessage)|SQSに対してメッセージの送信を行います。  |||
+|[AwsSqsPurgeQueue](#AwsSqsPurgeQueue)|SQSに対してメッセージのクリアを行います。  |||
 
 ------
 
@@ -106,6 +107,28 @@ commands :
 1. 真偽値 true or false で指定します。
 1. メッセージ重複排除IDが設定されていた場合、そちらが優先されます。
 1. メッセージ重複排除IDの生成はUUIDで行われます。
+------
+
+### AwsSqsPurgeQueue
+SQSに対してメッセージのクリアを行います。
+#### Command Type
+- Assert : No
+- Evidence : No
+
+#### Functions
+- SQSに対してメッセージのクリアを行います。
+
+#### Structure
+```yaml
+commands : 
+  id : コマンドのID
+  command : 「AwsSqsPurgeQueue」固定
+  summary : コマンドの概要（任意）
+  description : コマンドの詳細（任意）
+  target : 対象とするSQSのEndpoint
+
+```
+
 
 ## Configuration List
 
