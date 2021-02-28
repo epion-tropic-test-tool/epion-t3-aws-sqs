@@ -249,3 +249,7 @@ messages:
     message:
       - lang: ja_JP
         contents: "対象（target）のEndpointからのメッセージ削除に失敗しました.SQS:{0}"
+  - id: com.epion_t3.aws.sqs.err.9004
+    message:
+      - lang: ja_JP
+        contents: "対象（target）のEndpointからのメッセージクリアに失敗しました.SQS:{0}"
