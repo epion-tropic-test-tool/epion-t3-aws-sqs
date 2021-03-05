@@ -63,6 +63,8 @@ commands :
   command : 「AwsSqsReceiveMessage」固定
   summary : コマンドの概要（任意）
   description : コマンドの詳細（任意）
+  credentialsConfigRef : 資格設定の参照
+  sdkHttpClientConfigRef : HTTPクライアント設定の参照
   target : 対象とするSQSのEndpoint
   maxNumberOfMessages : 同時に受信するメッセージの数。デフォルトは1です。10までの値で指定してください。
   visibilityTimeout : 可視性タイムアウトの秒数を指定してください。
@@ -92,6 +94,8 @@ commands :
   command : 「AwsSqsSendMessage」固定
   summary : コマンドの概要（任意）
   description : コマンドの詳細（任意）
+  credentialsConfigRef : 資格設定の参照
+  sdkHttpClientConfigRef : HTTPクライアント設定の参照
   target : 対象とするSQSのEndpoint
   value : 対象とするメッセージ
   messageGroupId : メッセージグループID
@@ -125,6 +129,8 @@ commands :
   command : 「AwsSqsPurgeQueue」固定
   summary : コマンドの概要（任意）
   description : コマンドの詳細（任意）
+  credentialsConfigRef : 資格設定の参照
+  sdkHttpClientConfigRef : HTTPクライアント設定の参照
   target : 対象とするSQSのEndpoint
 
 ```

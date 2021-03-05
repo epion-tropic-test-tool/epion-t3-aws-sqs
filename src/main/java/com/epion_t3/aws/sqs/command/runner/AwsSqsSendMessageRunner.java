@@ -2,7 +2,9 @@
 package com.epion_t3.aws.sqs.command.runner;
 
 import com.epion_t3.aws.core.configuration.AwsCredentialsProviderConfiguration;
+import com.epion_t3.aws.core.configuration.AwsSdkHttpClientConfiguration;
 import com.epion_t3.aws.core.holder.AwsCredentialsProviderHolder;
+import com.epion_t3.aws.core.holder.AwsSdkHttpClientHolder;
 import com.epion_t3.aws.sqs.command.model.AwsSqsSendMessage;
 import com.epion_t3.aws.sqs.messages.AwsSqsMessages;
 import com.epion_t3.core.command.bean.CommandResult;
@@ -37,7 +39,15 @@ public class AwsSqsSendMessageRunner extends AbstractCommandRunner<AwsSqsSendMes
                 .getCredentialsProvider(awsCredentialsProviderConfiguration);
 
         // SQSクライアントを生成
-        var sqs = SqsClient.builder().credentialsProvider(credentialsProvider).build();
+        var sqs = (SqsClient) null;
+        if (StringUtils.isEmpty(command.getSdkHttpClientConfigRef())) {
+            sqs = SqsClient.builder().credentialsProvider(credentialsProvider).build();
+        } else {
+            var sdkHttpClientConfiguration = (AwsSdkHttpClientConfiguration) referConfiguration(
+                    command.getSdkHttpClientConfigRef());
+            var sdkHttpClient = AwsSdkHttpClientHolder.getInstance().getSdkHttpClient(sdkHttpClientConfiguration);
+            sqs = SqsClient.builder().credentialsProvider(credentialsProvider).httpClient(sdkHttpClient).build();
+        }
 
         // リクエスト構築処理を生成
         var requestBuilder = SendMessageRequest.builder().queueUrl(command.getTarget());

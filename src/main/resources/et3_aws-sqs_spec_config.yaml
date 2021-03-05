@@ -79,35 +79,49 @@ commands:
         summary:
           - lang: ja_JP
             contents: コマンドの詳細（任意）
+      - order: 5
+        name: credentialsConfigRef
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "資格設定の参照"
       - order: 6
+        name: sdkHttpClientConfigRef
+        required: false
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "HTTPクライアント設定の参照"
+      - order: 7
         name: target
         required: true
         type: string
         summary:
           - lang: ja_JP
             contents: "対象とするSQSのEndpoint"
-      - order: 7
+      - order: 8
         name: value
         required: true
         type: string
         summary:
           - lang: ja_JP
             contents: "対象とするメッセージ"
-      - order: 8
+      - order: 9
         name: messageGroupId
         required: false
         type: string
         summary:
           - lang: ja_JP
             contents: "メッセージグループID"
-      - order: 9
+      - order: 10
         name: messageDeduplicationId
         required: false
         type: string
         summary:
           - lang: ja_JP
             contents: "メッセージ重複排除ID"
-      - order: 10
+      - order: 11
         name: autoGenerateMessageGroupId
         required: false
         type: boolean
@@ -121,7 +135,7 @@ commands:
             contents: "メッセージグループIDが設定されていた場合、そちらが優先されます。"
           - lang: ja_JP
             contents: "メッセージグループIDの生成はUUIDで行われます。"
-      - order: 11
+      - order: 12
         name: autoMessageDeduplicationId
         required: false
         type: boolean
@@ -198,35 +212,49 @@ commands:
         summary:
           - lang: ja_JP
             contents: コマンドの詳細（任意）
+      - order: 5
+        name: credentialsConfigRef
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "資格設定の参照"
       - order: 6
+        name: sdkHttpClientConfigRef
+        required: false
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "HTTPクライアント設定の参照"
+      - order: 7
         name: target
         required: true
         type: string
         summary:
           - lang: ja_JP
             contents: "対象とするSQSのEndpoint"
-      - order: 7
+      - order: 8
         name: maxNumberOfMessages
         required: false
         type: number
         summary:
           - lang: ja_JP
             contents: "同時に受信するメッセージの数。デフォルトは1です。10までの値で指定してください。"
-      - order: 8
+      - order: 9
         name: visibilityTimeout
         required: false
         type: number
         summary:
           - lang: ja_JP
             contents: "可視性タイムアウトの秒数を指定してください。"
-      - order: 9
+      - order: 10
         name: waitTimeSeconds
         required: false
         type: number
         summary:
           - lang: ja_JP
             contents: "Waitタイムアウトの秒数を指定してください。"
-      - order: 10
+      - order: 11
         name: deleteMessage
         required: false
         type: boolean
@@ -280,7 +308,21 @@ commands:
         summary:
           - lang: ja_JP
             contents: コマンドの詳細（任意）
+      - order: 5
+        name: credentialsConfigRef
+        required: true
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "資格設定の参照"
       - order: 6
+        name: sdkHttpClientConfigRef
+        required: false
+        type: string
+        summary:
+          - lang: ja_JP
+            contents: "HTTPクライアント設定の参照"
+      - order: 7
         name: target
         required: true
         type: string

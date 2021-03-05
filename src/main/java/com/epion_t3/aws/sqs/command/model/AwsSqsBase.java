@@ -9,4 +9,5 @@ import lombok.Setter;
 @Setter
 public class AwsSqsBase extends Command {
     private String credentialsConfigRef;
+    private String sdkHttpClientConfigRef;
 }
